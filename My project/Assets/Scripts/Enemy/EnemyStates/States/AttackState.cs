@@ -15,8 +15,8 @@ public class AttackState : EnemyState
 
         agent = enemy.GetComponent<NavMeshAgent>();
         agent.isStopped = true; // 🔒 Detiene al enemigo al entrar
-       // enemyAnimation.SetMoving(false);
-       // enemyAnimation.SetAttack(true);
+        enemyAnimation.SetMoving(false);
+        enemyAnimation.SetAttack(true);
         lastAttackTime = Time.time;
     }
 
