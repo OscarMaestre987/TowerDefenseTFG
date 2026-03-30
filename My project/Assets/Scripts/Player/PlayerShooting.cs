@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using System.Linq.Expressions;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -12,19 +13,23 @@ public class PlayerShooting : MonoBehaviour
     public LayerMask hitLayers;
 
     [Header("Munición")]
-    public int maxAmmo = 30;
-    public int currentAmmo;
+    public int maxAmmo = 7;
     public TextMeshProUGUI ammoText;
     public int shootMouseButton = 0;
     public KeyCode reloadKey = KeyCode.R;
 
+    [Header("Weapons")]
+    public WeaponData currentWeapon;
+
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
+    private int[] currentAmmoPerWeapon;
+    private int[] totalAmmoPerWeapon;
+    private int index;
 
 
     void Start()
     {
-        currentAmmo = maxAmmo;
         UpdateAmmoUI();
     }
 
@@ -34,7 +39,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetMouseButton(shootMouseButton) && Time.time >= nextTimeToFire)
         {
-            if (currentAmmo > 0)
+            if (currentAmmoPerWeapon[index] > 0)
             {
                 nextTimeToFire = Time.time + fireRate;
                 Shoot();
@@ -51,9 +56,15 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
+    public void InitializeWeapons(int[] currentAmmoList, int[] totalAmmoList)
+    {
+        currentAmmoPerWeapon = currentAmmoList;
+        totalAmmoPerWeapon = totalAmmoList;
+        UpdateAmmoUI();
+    }
     void Shoot()
     {
-        currentAmmo--;
+        currentAmmoPerWeapon[index]--;
         UpdateAmmoUI();
 
         Ray ray = new Ray(firePoint.position, firePoint.forward);
@@ -75,25 +86,53 @@ public class PlayerShooting : MonoBehaviour
 
     IEnumerator Reload()
     {
-        isReloading = true;
-        Debug.Log("Recargando...");
+        if (totalAmmoPerWeapon[index] > 0)
+        {
 
-        SoundManager.Instance.PlaySound(SoundManager.Instance.reloadClip);
 
-        // Espera 1.5 segundos (puedes ajustar)
-        yield return new WaitForSeconds(1.5f);
+            isReloading = true;
+            Debug.Log("Recargando...");
 
-        currentAmmo = maxAmmo;
+            SoundManager.Instance.PlaySound(SoundManager.Instance.reloadClip);
+
+            // Espera 1.5 segundos (puedes ajustar)
+            yield return new WaitForSeconds(1.5f);
+
+            if (totalAmmoPerWeapon[index] > (maxAmmo - currentAmmoPerWeapon[index]))
+            {
+                totalAmmoPerWeapon[index] = totalAmmoPerWeapon[index] - (maxAmmo - currentAmmoPerWeapon[index]);
+                currentAmmoPerWeapon[index] = maxAmmo;
+            }
+            else
+            {
+                currentAmmoPerWeapon[index] = currentAmmoPerWeapon[index] + totalAmmoPerWeapon[index];
+                totalAmmoPerWeapon[index] = 0;
+            }
+            UpdateAmmoUI();
+
+            isReloading = false;
+        }
+    }
+
+    public void ApplyWeapon(WeaponData weapon, int index)
+    {
+        currentWeapon = weapon;
+
+        damage = weapon.damage;
+        fireRate = weapon.fireRate;
+        fireRange = weapon.fireRange;
+        maxAmmo = weapon.maxAmmo;
+        this.index = index;
+
+
         UpdateAmmoUI();
-
-        isReloading = false;
     }
 
     void UpdateAmmoUI()
     {
         if (ammoText != null)
         {
-            ammoText.text = currentAmmo + " / " + maxAmmo;
+            ammoText.text = currentAmmoPerWeapon[index] + " / " + totalAmmoPerWeapon[index];
         }
     }
 }
