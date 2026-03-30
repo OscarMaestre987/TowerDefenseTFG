@@ -17,5 +17,5 @@ MonoBehaviour:
   fireRate: 0.2
   fireRange: 100
   maxAmmo: 30
-  totalAmmo: 234
+  totalAmmo: 240
   currentAmmo: 30

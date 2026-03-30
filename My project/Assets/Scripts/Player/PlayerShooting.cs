@@ -25,6 +25,7 @@ public class PlayerShooting : MonoBehaviour
     private bool isReloading = false;
     private int[] currentAmmoPerWeapon;
     private int[] totalAmmoPerWeapon;
+    private int[] totalAmmoPerWeaponOriginal;
     private int index;
 
 
@@ -60,6 +61,7 @@ public class PlayerShooting : MonoBehaviour
     {
         currentAmmoPerWeapon = currentAmmoList;
         totalAmmoPerWeapon = totalAmmoList;
+        totalAmmoPerWeaponOriginal = (int[])totalAmmoList.Clone();
         UpdateAmmoUI();
     }
     void Shoot()
@@ -125,6 +127,13 @@ public class PlayerShooting : MonoBehaviour
         this.index = index;
 
 
+        UpdateAmmoUI();
+    }
+
+    public void ResetAmmo(int index2)
+    {
+        Debug.Log($"Reset Ammo {totalAmmoPerWeaponOriginal[index2]}");
+        totalAmmoPerWeapon[index2] = totalAmmoPerWeaponOriginal[index2];
         UpdateAmmoUI();
     }
 
