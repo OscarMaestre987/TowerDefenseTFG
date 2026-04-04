@@ -3,13 +3,17 @@ using UnityEngine;
 
 public class TurretPurchaseZone : MonoBehaviour
 {
-    public GameObject turretPrefab;
+    public GameObject[] turretLevels;
+    public int[] turretCosts;
+
     public Transform spawnPoint;
-    public int turretCost = 100;
     public TextMeshProUGUI buyPromptText;
 
     private bool playerInside = false;
     private PlayerGold playerGold;
+
+    private GameObject currentTurret;
+    private int currentLevel = -1;
 
     void Start()
     {
@@ -23,9 +27,7 @@ public class TurretPurchaseZone : MonoBehaviour
         {
             playerInside = true;
             playerGold = other.GetComponent<PlayerGold>();
-
-            if (buyPromptText != null)
-                buyPromptText.text = $"Presiona F para comprar torreta ({turretCost}G)";
+            UpdateText();
         }
     }
 
@@ -45,29 +47,65 @@ public class TurretPurchaseZone : MonoBehaviour
     {
         if (playerInside && Input.GetKeyDown(KeyCode.F))
         {
-            TryPurchase();
+            TryBuyOrUpgrade();
         }
     }
 
-    void TryPurchase()
+    void TryBuyOrUpgrade()
     {
-        if (playerGold != null && playerGold.Gold >= turretCost)
+        int nextLevel = currentLevel + 1;
+
+        // 🔥 si ya está al máximo → no hacer nada
+        if (nextLevel >= turretLevels.Length)
         {
-            playerGold.RemoveGold(turretCost);
-
-            Instantiate(turretPrefab, spawnPoint.position, spawnPoint.rotation);
-
             if (buyPromptText != null)
-                buyPromptText.text = "";
+                buyPromptText.text = "Nivel máximo alcanzado";
+            return;
+        }
 
-            gameObject.SetActive(false);
+        int cost = turretCosts[nextLevel];
+
+        if (playerGold != null && playerGold.Gold >= cost)
+        {
+            playerGold.RemoveGold(cost);
+
+            // 🔥 destruir torreta anterior
+            if (currentTurret != null)
+                Destroy(currentTurret);
+
+            // 🔥 instanciar nueva
+            currentTurret = Instantiate(
+                turretLevels[nextLevel],
+                spawnPoint.position,
+                spawnPoint.rotation
+            );
+
+            currentLevel = nextLevel;
+
+            UpdateText();
         }
         else
         {
-            // Opcional: mostrar que no hay oro
             if (buyPromptText != null)
-                buyPromptText.text = $"No tienes suficiente oro ({turretCost}G)";
+                buyPromptText.text = $"No tienes suficiente oro ({cost}G)";
+        }
+    }
+
+    void UpdateText()
+    {
+        if (buyPromptText == null) return;
+
+        if (currentLevel == -1)
+        {
+            buyPromptText.text = $"F: Comprar torreta ({turretCosts[0]}G)";
+        }
+        else if (currentLevel < turretLevels.Length - 1)
+        {
+            buyPromptText.text = $"F: Mejorar torreta ({turretCosts[currentLevel + 1]}G)";
+        }
+        else
+        {
+            buyPromptText.text = "Torreta al máximo";
         }
     }
 }
-

@@ -19,7 +19,7 @@ public class Turret : MonoBehaviour
         if (currentTarget != null)
         {
             Vector3 direction = currentTarget.position - transform.position;
-
+            direction.y = 0f;
             // Girar suavemente hacia el objetivo
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 50f);
