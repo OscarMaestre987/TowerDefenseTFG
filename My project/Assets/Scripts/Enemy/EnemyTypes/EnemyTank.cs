@@ -6,9 +6,10 @@ public class EnemyTank : EnemyAI
 {
     void Awake()
     {
-        moveSpeed = 1.5f;
+        moveSpeed = 3f;
         maxHealth = 100;
         damage = 20;
         goldGain = 300;
+        aggroThreshold = 0f;
     }
 }

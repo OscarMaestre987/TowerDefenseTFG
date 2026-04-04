@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
 
     public int baseWavePoints = 600;            
     public int pointsPerWaveIncrease = 300;   
-    public float timeBetweenWaves = 5f;
+    public float timeBetweenWaves = 20f;
     public float spawnOffsetRadius = 20f;
     public Transform[] spawnPoints;
     public List<EnemyEntry> enemyTypes = new List<EnemyEntry>();
@@ -23,6 +23,8 @@ public class WaveManager : MonoBehaviour
     private int currentWavePoints;
     private List<GameObject> activeEnemies = new List<GameObject>();
     private bool isSpawning = false;
+    private bool waitingNextWave = false;
+    private bool skipWave = false;
 
     public TextMeshProUGUI waveTextUI;
     public float waveTextDisplayTime = 2f;
@@ -39,6 +41,10 @@ public class WaveManager : MonoBehaviour
         {
             StartCoroutine(StartNextWave());
         }
+        if (waitingNextWave && Input.GetKeyDown(KeyCode.P))
+        {
+            skipWave = true;
+        }
     }
 
     IEnumerator StartNextWave()
@@ -51,8 +57,9 @@ public class WaveManager : MonoBehaviour
 
         isSpawning = true;
 
-        yield return new WaitForSeconds(timeBetweenWaves);
-
+        yield return StartNextWaveDelay();
+        if (currentWave % 5 == 0)
+            pointsPerWaveIncrease = pointsPerWaveIncrease * 3;
         currentWavePoints = baseWavePoints + (currentWave - 1) * pointsPerWaveIncrease;
         Debug.Log($"Oleada {currentWave} iniciando con {currentWavePoints} puntos");
         currentWave++;
@@ -60,6 +67,41 @@ public class WaveManager : MonoBehaviour
         List<EnemyEntry> waveEnemies = BuildWaveEnemyList(currentWavePoints);
 
         StartCoroutine(SpawnEnemiesGradually(waveEnemies, 0.5f));
+    }
+
+    IEnumerator StartNextWaveDelay()
+    {
+        waitingNextWave = true;
+        skipWave = false;
+
+        float timer = timeBetweenWaves;
+
+        while (timer > 0)
+        {
+            // 🔥 SI PULSA P → SALTA
+            if (skipWave)
+            {
+                Debug.Log("Oleada saltada");
+                break;
+            }
+
+            if (waveTextUI != null)
+            {
+                waveTextUI.text =
+                    "Comienzo de la siguiente oleada en: " + Mathf.Ceil(timer) +
+                    "\n(P para saltar)";
+            }
+
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        // limpiar texto
+        if (waveTextUI != null)
+            waveTextUI.text = "";
+
+        StartNextWave();
+        waitingNextWave = false;
     }
 
     IEnumerator ClearWaveTextAfterDelay(float delay)

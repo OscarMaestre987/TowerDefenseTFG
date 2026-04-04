@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   weaponName: Gun
-  damage: 10
+  damage: 20
   fireRate: 1
   fireRange: 100
   maxAmmo: 7

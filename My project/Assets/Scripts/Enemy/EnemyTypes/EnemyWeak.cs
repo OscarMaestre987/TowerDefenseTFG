@@ -6,9 +6,10 @@ public class EnemyWeak : EnemyAI
 {
     void Awake()
     {
-        moveSpeed = 2.5f;
+        moveSpeed = 4f;
         maxHealth = 50;
         damage = 20;
         goldGain = 100;
+        aggroThreshold = 0.8f;
     }
 }
