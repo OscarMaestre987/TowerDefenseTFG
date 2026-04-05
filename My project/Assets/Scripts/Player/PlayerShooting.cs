@@ -7,13 +7,9 @@ public class PlayerShooting : MonoBehaviour
 {
     [Header("Disparo")]
     public Transform firePoint;
-    public float fireRate = 0.25f;
-    public float fireRange = 100f;
-    public int damage = 10;
     public LayerMask hitLayers;
 
     [Header("Munición")]
-    public int maxAmmo = 7;
     public TextMeshProUGUI ammoText;
     public int shootMouseButton = 0;
     public KeyCode reloadKey = KeyCode.R;
@@ -21,12 +17,21 @@ public class PlayerShooting : MonoBehaviour
     [Header("Weapons")]
     public WeaponData currentWeapon;
 
+    private float fireRate;
+    private float fireRange;
+    private int damage;
+    private int maxAmmo;
+    private int damageUpgrade;
+
     private float nextTimeToFire = 0f;
     private bool isReloading = false;
     private int[] currentAmmoPerWeapon;
     private int[] totalAmmoPerWeapon;
     private int[] totalAmmoPerWeaponOriginal;
     private int index;
+    private int numUpgradePistol = 0;
+    private int numUpgradeRifle = 0;
+    private int finalDamage;
 
 
     void Start()
@@ -78,7 +83,11 @@ public class PlayerShooting : MonoBehaviour
             IDamageable damageable = hit.collider.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(damage, gameObject);
+                if (index == 0)
+                    finalDamage = damage + (damageUpgrade * numUpgradePistol);
+                if (index == 1)
+                    finalDamage = damage + (damageUpgrade * numUpgradeRifle);
+                damageable.TakeDamage(finalDamage, gameObject);
             }
         }
 
@@ -124,6 +133,7 @@ public class PlayerShooting : MonoBehaviour
         fireRate = weapon.fireRate;
         fireRange = weapon.fireRange;
         maxAmmo = weapon.maxAmmo;
+        damageUpgrade= weapon.damageUpgrade;
         this.index = index;
 
 
@@ -137,7 +147,15 @@ public class PlayerShooting : MonoBehaviour
         UpdateAmmoUI();
     }
 
-    void UpdateAmmoUI()
+    public void UpgradeWeapon(int index2)
+    {
+        if (index2 == 0)
+            numUpgradePistol++;
+        if (index2 == 1)
+            numUpgradeRifle++;
+    }
+
+        void UpdateAmmoUI()
     {
         if (ammoText != null)
         {

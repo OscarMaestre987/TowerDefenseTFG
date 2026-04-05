@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8230326
 Transform:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ MonoBehaviour:
   - prefab: {fileID: 911015377003296023, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
     cost: 200
   - prefab: {fileID: 7164911603952597612, guid: 4e475e835edc9654c899b974ae0c0218, type: 3}
-    cost: 300
+    cost: 500
   - prefab: {fileID: 8146652245365812471, guid: 21ff26e4b6e067b4a98392f9b43a4b91, type: 3}
     cost: 100
   waveTextUI: {fileID: 789369975}
@@ -1310,7 +1310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7874c3296db47604bbd651d1254753bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCost: 1500
+  ammoBaseCost: 1500
+  upgradeBaseCost: 3000
   buyPromptText: {fileID: 1449443412}
   index: 1
 --- !u!135 &477357970
@@ -2683,13 +2684,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 486617332}
-  fireRate: 1
-  fireRange: 100
-  damage: 10
   hitLayers:
     serializedVersion: 2
     m_Bits: 8
-  maxAmmo: 7
   ammoText: {fileID: 1062536627}
   shootMouseButton: 0
   reloadKey: 114
@@ -4921,7 +4918,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7874c3296db47604bbd651d1254753bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCost: 500
+  ammoBaseCost: 500
+  upgradeBaseCost: 1000
   buyPromptText: {fileID: 1449443412}
   index: 0
 --- !u!135 &1833338382

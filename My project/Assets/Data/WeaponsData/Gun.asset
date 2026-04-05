@@ -19,3 +19,4 @@ MonoBehaviour:
   maxAmmo: 7
   totalAmmo: 35
   currentAmmo: 7
+  damageUpgrade: 5

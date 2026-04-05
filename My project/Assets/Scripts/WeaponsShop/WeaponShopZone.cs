@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class WeaponShopZone : MonoBehaviour
 {
-    public int ammoCost = 100;
+    public int ammoBaseCost = 100;
+    public int upgradeBaseCost = 100;
     public TextMeshProUGUI buyPromptText;
     public int index = 0;
 
@@ -26,7 +27,7 @@ public class WeaponShopZone : MonoBehaviour
             playerGold = other.GetComponent<PlayerGold>();
 
             if (buyPromptText != null)
-                buyPromptText.text = $"Presiona F para comprar munición ({ammoCost}G)";
+                buyPromptText.text = $"Presiona F para comprar munición ({ammoBaseCost}G) \n Presiona T para mejorar arma ({upgradeBaseCost}G)";
         }
     }
 
@@ -48,13 +49,36 @@ public class WeaponShopZone : MonoBehaviour
         {
             TryPurchase();
         }
+        if (playerInside && Input.GetKeyDown(KeyCode.T))
+        {
+            TryUpgrade();
+        }
+    }
+
+    void TryUpgrade()
+    {
+        if (playerGold != null && playerGold.Gold >= upgradeBaseCost)
+        {
+            playerGold.RemoveGold(upgradeBaseCost);
+            player.GetComponent<PlayerShooting>().UpgradeWeapon(index);
+            upgradeBaseCost = upgradeBaseCost * 2;
+            ammoBaseCost = ammoBaseCost + 500;
+            if (buyPromptText != null)
+                buyPromptText.text = $"Presiona F para comprar munición ({ammoBaseCost}G) \n Presiona T para mejorar arma ({upgradeBaseCost}G)";
+        }
+        else
+        {
+            // Opcional: mostrar que no hay oro
+            if (buyPromptText != null)
+                buyPromptText.text = $"No tienes suficiente oro ({upgradeBaseCost}G)";
+        }
     }
 
     void TryPurchase()
     {
-        if (playerGold != null && playerGold.Gold >= ammoCost)
+        if (playerGold != null && playerGold.Gold >= ammoBaseCost)
         {
-            playerGold.RemoveGold(ammoCost);
+            playerGold.RemoveGold(ammoBaseCost);
             player.GetComponent<PlayerShooting>().ResetAmmo(index);
 
         }
@@ -62,7 +86,7 @@ public class WeaponShopZone : MonoBehaviour
         {
             // Opcional: mostrar que no hay oro
             if (buyPromptText != null)
-                buyPromptText.text = $"No tienes suficiente oro ({ammoCost}G)";
+                buyPromptText.text = $"No tienes suficiente oro ({ammoBaseCost}G)";
         }
     }
 }

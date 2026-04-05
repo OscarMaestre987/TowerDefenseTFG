@@ -60,8 +60,12 @@ public class WaveManager : MonoBehaviour
         isSpawning = true;
 
         yield return StartNextWaveDelay();
+
+
         num = currentWave / 10;
         currentWavePoints = currentWavePoints + (int)(pointsPerWaveIncrease * Mathf.Pow(2, num));
+
+
         Debug.Log($"Oleada {currentWave} iniciando con {currentWavePoints} puntos {(int)(pointsPerWaveIncrease)}  llll{(int)Mathf.Pow(2, currentWave / 10f)}");
         currentWave++;
 
@@ -79,7 +83,6 @@ public class WaveManager : MonoBehaviour
 
         while (timer > 0)
         {
-            // 🔥 SI PULSA P → SALTA
             if (skipWave)
             {
                 Debug.Log("Oleada saltada");

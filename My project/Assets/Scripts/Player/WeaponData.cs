@@ -13,4 +13,5 @@ public class WeaponData : ScriptableObject
     public int maxAmmo;
     public int totalAmmo;
     public int currentAmmo;
+    public int damageUpgrade;
 }

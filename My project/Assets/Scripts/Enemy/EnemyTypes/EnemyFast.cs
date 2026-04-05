@@ -7,7 +7,7 @@ public class EnemyFast : EnemyAI
     void Awake()
     {
         moveSpeed = 7f;
-        maxHealth = 25;
+        maxHealth = 30;
         damage = 5;
         goldGain = 200;
         aggroThreshold = 0.8f;
