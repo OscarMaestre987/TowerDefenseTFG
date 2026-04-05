@@ -11,5 +11,7 @@ public class EnemyTank : EnemyAI
         damage = 20;
         goldGain = 300;
         aggroThreshold = 0f;
+        attackSpeed = 1.5f;
+        attackRange = 2f;
     }
 }

@@ -21,6 +21,7 @@ public class WaveManager : MonoBehaviour
 
     private int currentWave = 1;
     private int currentWavePoints;
+    private int num;
     private List<GameObject> activeEnemies = new List<GameObject>();
     private bool isSpawning = false;
     private bool waitingNextWave = false;
@@ -30,6 +31,7 @@ public class WaveManager : MonoBehaviour
     public float waveTextDisplayTime = 2f;
     void Start()
     {
+        currentWavePoints = baseWavePoints - pointsPerWaveIncrease;
         StartCoroutine(StartNextWave());
     }
 
@@ -58,10 +60,9 @@ public class WaveManager : MonoBehaviour
         isSpawning = true;
 
         yield return StartNextWaveDelay();
-        if (currentWave % 5 == 0)
-            pointsPerWaveIncrease = pointsPerWaveIncrease * 3;
-        currentWavePoints = baseWavePoints + (currentWave - 1) * pointsPerWaveIncrease;
-        Debug.Log($"Oleada {currentWave} iniciando con {currentWavePoints} puntos");
+        num = currentWave / 10;
+        currentWavePoints = currentWavePoints + (int)(pointsPerWaveIncrease * Mathf.Pow(2, num));
+        Debug.Log($"Oleada {currentWave} iniciando con {currentWavePoints} puntos {(int)(pointsPerWaveIncrease)}  llll{(int)Mathf.Pow(2, currentWave / 10f)}");
         currentWave++;
 
         List<EnemyEntry> waveEnemies = BuildWaveEnemyList(currentWavePoints);

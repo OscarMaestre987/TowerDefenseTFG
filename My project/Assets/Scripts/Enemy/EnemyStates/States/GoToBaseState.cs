@@ -28,12 +28,12 @@ public class GoToBaseState : EnemyState
 
         // Medir la distancia entre colliders o entre centros
         float distanceToBase = enemy.transform.position.z - enemy.baseTarget.position.z;
-        if (distanceToBase <= enemy.attackRange)
+        if (distanceToBase <= enemy.attackRange + 0.5f)
         {
             if (enemyAnimation != null)
             {
-                enemyAnimation.SetMoving(true);
-                enemyAnimation.SetAttack(false);
+                enemyAnimation.SetMoving(false);
+                enemyAnimation.SetAttack(true);
             }
             stateMachine.ChangeState(new AttackState(stateMachine, enemy, enemyAnimation));
         }

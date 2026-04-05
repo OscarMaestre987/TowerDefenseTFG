@@ -1,6 +1,7 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class AttackState : EnemyState
 {
@@ -18,37 +19,38 @@ public class AttackState : EnemyState
         agent.isStopped = true; // 🔒 Detiene al enemigo al entrar
         enemyAnimation.SetMoving(false);
         enemyAnimation.SetAttack(true);
-        DealDamage();
-        lastAttackTime = Time.time;
     }
 
     public override void Update()
     {
         if (enemy.currentTarget == null) return;
-
-        // 🔥 esperar cooldown
-        if (Time.time - lastAttackTime >= enemy.attackSpeed)
+        float distance = 0f; ;
+        if (enemy.currentTarget == enemy.baseTarget)
         {
-            // comprobar distancia
-            float distance = Vector3.Distance(enemy.transform.position, enemy.currentTarget.position);
-
-            if (distance <= enemy.attackRange)
-            {
-                stateMachine.ChangeState(new AttackState(stateMachine, enemy, enemyAnimation));
-                return;
-            }
+            distance = enemy.transform.position.z - enemy.baseTarget.position.z;
         }
-
-        // 🔁 si se aleja → perseguir
-        float distanceToTarget = Vector3.Distance(enemy.transform.position, enemy.currentTarget.position);
-
-        if (distanceToTarget > enemy.attackRange + 0.5f)
+        if (enemy.currentTarget == enemy.playerTarget)
+        {
+            distance = Vector3.Distance(enemy.transform.position, enemy.currentTarget.position);
+        }
+        Debug.Log($"distance: {distance}");
+        // 🔥 esperar cooldown
+        if (distance <= enemy.attackRange + 0.5f)
+        {
+            if (Time.time - lastAttackTime >= enemy.attackSpeed)
+            {
+                DealDamage();
+                lastAttackTime = Time.time;
+            }
+            // comprobar distancia  Time.time - lastAttackTime >= enemy.attackSpeed
+        }
+        if (distance > enemy.attackRange + 0.5f)
         {
             agent.isStopped = false;
             enemyAnimation.SetMoving(true);
             enemyAnimation.SetAttack(false);
 
-            if (enemy.currentHealth <= enemy.aggroThreshold)
+            if (enemy.currentHealth <= (enemy.maxHealth * enemy.aggroThreshold))
                 stateMachine.ChangeState(new ChasePlayerState(stateMachine, enemy, enemyAnimation));
             else
                 stateMachine.ChangeState(new GoToBaseState(stateMachine, enemy, enemyAnimation));

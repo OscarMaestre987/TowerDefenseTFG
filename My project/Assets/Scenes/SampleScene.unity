@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7874c3296db47604bbd651d1254753bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCost: 3000
+  ammoCost: 1500
   buyPromptText: {fileID: 1449443412}
   index: 1
 --- !u!135 &477357970
@@ -4921,7 +4921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7874c3296db47604bbd651d1254753bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCost: 1000
+  ammoCost: 500
   buyPromptText: {fileID: 1449443412}
   index: 0
 --- !u!135 &1833338382
