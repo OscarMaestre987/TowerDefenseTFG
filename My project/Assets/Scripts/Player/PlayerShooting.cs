@@ -16,6 +16,8 @@ public class PlayerShooting : MonoBehaviour
 
     [Header("Weapons")]
     public WeaponData currentWeapon;
+    [SerializeField] private Animator animatorPistol;
+    [SerializeField] private Animator animatorRifle;
 
     private float fireRate;
     private float fireRange;
@@ -76,7 +78,15 @@ public class PlayerShooting : MonoBehaviour
 
         Ray ray = new Ray(firePoint.position, firePoint.forward);
         RaycastHit hit;
-
+        if (index == 0)
+        {
+            animatorPistol.SetTrigger("shoot");
+        }
+        else if (index == 1)
+        {
+            animatorRifle.SetTrigger("shoot");
+        }
+        animatorPistol.SetTrigger("shoot");
         if (Physics.Raycast(ray, out hit, fireRange, hitLayers))
         {
 
