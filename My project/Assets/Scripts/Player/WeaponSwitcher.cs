@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
@@ -11,6 +12,7 @@ public class WeaponSwitcher : MonoBehaviour
     private int currentIndex = 0;
 
     private PlayerShooting playerShooting;
+
 
     void Start()
     {
@@ -30,6 +32,11 @@ public class WeaponSwitcher : MonoBehaviour
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
+        if (playerShooting.animatorRifle.GetCurrentAnimatorStateInfo(0).IsName("TakeRifle"))
+            return;
+        if (playerShooting.animatorPistol.GetCurrentAnimatorStateInfo(0).IsName("TakePistol"))
+            return;
+
         if (scroll > 0f)
         {
             currentIndex++;
@@ -46,6 +53,7 @@ public class WeaponSwitcher : MonoBehaviour
 
             SelectWeapon(currentIndex);
         }
+        playerShooting.chekWeapons(weapons, currentIndex);
     }
 
     void SelectWeapon(int index)
@@ -56,5 +64,6 @@ public class WeaponSwitcher : MonoBehaviour
         }
 
         playerShooting.ApplyWeapon(weaponData[index], index);
+        
     }
 }

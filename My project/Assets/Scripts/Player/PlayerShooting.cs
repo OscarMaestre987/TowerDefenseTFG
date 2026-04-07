@@ -16,8 +16,8 @@ public class PlayerShooting : MonoBehaviour
 
     [Header("Weapons")]
     public WeaponData currentWeapon;
-    [SerializeField] private Animator animatorPistol;
-    [SerializeField] private Animator animatorRifle;
+    [SerializeField] public Animator animatorPistol;
+    [SerializeField] public Animator animatorRifle;
 
     private float fireRate;
     private float fireRange;
@@ -143,7 +143,7 @@ public class PlayerShooting : MonoBehaviour
         fireRate = weapon.fireRate;
         fireRange = weapon.fireRange;
         maxAmmo = weapon.maxAmmo;
-        damageUpgrade= weapon.damageUpgrade;
+        damageUpgrade = weapon.damageUpgrade;
         this.index = index;
 
 
@@ -165,11 +165,37 @@ public class PlayerShooting : MonoBehaviour
             numUpgradeRifle++;
     }
 
-        void UpdateAmmoUI()
+    void UpdateAmmoUI()
     {
         if (ammoText != null)
         {
             ammoText.text = currentAmmoPerWeapon[index] + " / " + totalAmmoPerWeapon[index];
+        }
+    }
+
+    public void chekWeapons(GameObject[] weapons, int index)
+    {
+        if (index == 0)
+        {
+            if (weapons[0].transform.position.y < 1.44f)
+            {
+                animatorPistol.SetBool("tookWeapon", true);
+            }
+            else
+            {
+                animatorPistol.SetBool("tookWeapon", false);
+            }
+        }
+        else if (index == 1)
+        {
+            if (weapons[1].transform.position.y < 1.282f)
+            {
+                animatorRifle.SetBool("tookWeapon", true);
+            }
+            else
+            {
+                animatorRifle.SetBool("tookWeapon", false);
+            }
         }
     }
 }
