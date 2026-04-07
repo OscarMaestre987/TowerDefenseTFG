@@ -151,7 +151,7 @@ MonoBehaviour:
   aggroThreshold: 0.8
   attackRange: 1.5
   attackSpeed: 1
-  goldGain: 100
+  goldGain: 200
   currentHealth: 0
   hitEffectPrefab: {fileID: 6995642443170568310, guid: a16bdb88831847a4db3041758d688e82, type: 3}
   deathEffectPrefab: {fileID: 8840154864037079461, guid: eb9da3846394965409800d90d7487813, type: 3}

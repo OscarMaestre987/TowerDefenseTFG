@@ -97,11 +97,11 @@ public class TurretPurchaseZone : MonoBehaviour
 
         if (currentLevel == -1)
         {
-            buyPromptText.text = $"F: Comprar torreta ({turretCosts[0]}G)";
+            buyPromptText.text = $"F + ({turretCosts[0]}G) = Torreta";
         }
         else if (currentLevel < turretLevels.Length - 1)
         {
-            buyPromptText.text = $"F: Mejorar torreta ({turretCosts[currentLevel + 1]}G)";
+            buyPromptText.text = $"F + ({turretCosts[currentLevel + 1]}G) = Mejora";
         }
         else
         {

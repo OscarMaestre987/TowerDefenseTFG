@@ -27,7 +27,7 @@ public class WeaponShopZone : MonoBehaviour
             playerGold = other.GetComponent<PlayerGold>();
 
             if (buyPromptText != null)
-                buyPromptText.text = $"Presiona F para comprar munición ({ammoBaseCost}G) \n Presiona T para mejorar arma ({upgradeBaseCost}G)";
+                buyPromptText.text = $"F + ({ammoBaseCost}G) = Municion \nT + ({upgradeBaseCost}G) = Mejora";
         }
     }
 
@@ -64,7 +64,7 @@ public class WeaponShopZone : MonoBehaviour
             upgradeBaseCost = upgradeBaseCost * 2;
             ammoBaseCost = ammoBaseCost + 500;
             if (buyPromptText != null)
-                buyPromptText.text = $"Presiona F para comprar munición ({ammoBaseCost}G) \n Presiona T para mejorar arma ({upgradeBaseCost}G)";
+                buyPromptText.text = $"F + ({ammoBaseCost}G) = Municion \nT + ({upgradeBaseCost}G) = Mejora";
         }
         else
         {

@@ -78,8 +78,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1298430684461494318, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298430684461494318, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: goldGain
-      value: 500
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298430684461494318, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298430684461494318, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298430684461494318, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298430684461494318, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: aggroThreshold
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2763182283930234438, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_Height
@@ -213,13 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d0da53fcdc29f479aea62984d84c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 20
+  maxHealth: 75
+  damage: 10
   moveSpeed: 3
   aggroThreshold: 0
   attackRange: 2
   attackSpeed: 1.5
-  goldGain: 500
+  goldGain: 1000
   currentHealth: 0
   hitEffectPrefab: {fileID: 6995642443170568310, guid: a16bdb88831847a4db3041758d688e82, type: 3}
   deathEffectPrefab: {fileID: 8840154864037079461, guid: eb9da3846394965409800d90d7487813, type: 3}

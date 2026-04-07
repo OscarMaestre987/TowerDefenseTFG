@@ -116,7 +116,7 @@ MonoBehaviour:
   - {fileID: 138906768218940055, guid: fe6b41ae7ba50664a8bc85994c6a78ef, type: 3}
   - {fileID: 341694140825934178, guid: 39ef86d6e8db7b24790cfb91a0b3becd, type: 3}
   - {fileID: 3337542954395005028, guid: 8c5c5f0d5a7bf904787c9a3b691a9e81, type: 3}
-  turretCosts: e8030000b80b00004c1d0000983a0000
+  turretCosts: e8030000d0070000b80b000088130000
   spawnPoint: {fileID: 6299821507173246289}
   buyPromptText: {fileID: 0}
 --- !u!1 &6299821507173246288

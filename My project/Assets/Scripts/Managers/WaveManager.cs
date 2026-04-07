@@ -92,7 +92,7 @@ public class WaveManager : MonoBehaviour
             if (waveTextUI != null)
             {
                 waveTextUI.text =
-                    "Comienzo de la siguiente oleada en: " + Mathf.Ceil(timer) +
+                    $"Oleada {currentWave} en: " + Mathf.Ceil(timer) +
                     "\n(P para saltar)";
             }
 

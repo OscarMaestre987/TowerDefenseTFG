@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2763182283930234438}
   - component: {fileID: 5125400106834785732}
   - component: {fileID: 4307421423604163478}
-  - component: {fileID: 4943279129716514735}
   - component: {fileID: 935454171}
   - component: {fileID: 935454164}
+  - component: {fileID: 1298430684461494318}
   m_Layer: 3
   m_Name: EnemyFast
   m_TagString: Untagged
@@ -101,32 +101,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4943279129716514735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911015377003296023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca61dfa0bcd8c074c86821552f3914e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 10
-  moveSpeed: 3
-  aggroThreshold: 80
-  attackRange: 1.5
-  attackSpeed: 1
-  goldGain: 100
-  currentHealth: 0
-  hitEffectPrefab: {fileID: 6995642443170568310, guid: a16bdb88831847a4db3041758d688e82, type: 3}
-  deathEffectPrefab: {fileID: 8840154864037079461, guid: eb9da3846394965409800d90d7487813, type: 3}
-  playerTarget: {fileID: 0}
-  baseTarget: {fileID: 0}
-  currentTarget: {fileID: 0}
-  enemyAnimation: {fileID: 0}
 --- !u!95 &935454171
 Animator:
   serializedVersion: 4
@@ -159,6 +133,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0c809bff66c1e45982cfb9aa3a0487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1298430684461494318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911015377003296023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d0da53fcdc29f479aea62984d84c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 25
+  damage: 5
+  moveSpeed: 7
+  aggroThreshold: 0.8
+  attackRange: 1.5
+  attackSpeed: 0.5
+  goldGain: 200
+  currentHealth: 0
+  hitEffectPrefab: {fileID: 6995642443170568310, guid: a16bdb88831847a4db3041758d688e82, type: 3}
+  deathEffectPrefab: {fileID: 8840154864037079461, guid: eb9da3846394965409800d90d7487813, type: 3}
+  playerTarget: {fileID: 0}
+  baseTarget: {fileID: 0}
+  currentTarget: {fileID: 0}
+  enemyAnimation: {fileID: 0}
 --- !u!1001 &7533876178108741826
 PrefabInstance:
   m_ObjectHideFlags: 0
