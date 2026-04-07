@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b21238c1c7871a2459c3a83e882659d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b21238c1c7871a2459c3a83e882659d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76,6 +76,22 @@ PrefabInstance:
     - target: {fileID: 911015377003296023, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763182283930234438, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: m_Height
+      value: 2.5450745
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763182283930234438, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2763182283930234438, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: m_Center.y
+      value: -0.074076176
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125400106834785732, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
+      propertyPath: m_Height
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 6620433713790028932, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_Mesh
