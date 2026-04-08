@@ -58,13 +58,23 @@ public class EnemyAI : MonoBehaviour, IDamageable
         {
             stateMachine.ChangeState(new DeadState(stateMachine, this, enemyAnimation));
         }
+
+        // Comprueba si el enemigo debe cambiar a estado agresivo (perseguir al jugador)
         else if (
+            // El enemigo tiene la vida por debajo del umbral definido (estado "aggro")
             currentHealth <= maxHealth * aggroThreshold &&
+
+            // Evita cambiar de estado si ya está persiguiendo al jugador
             !(stateMachine.currentState is ChasePlayerState) &&
-            source.CompareTag("Player") // ✅ Solo si fue el jugador
+
+            // Solo se activa si el daño proviene del jugador (no de torres u otros)
+            source.CompareTag("Player")
         )
         {
+            // Establece al jugador como nuevo objetivo
             currentTarget = playerTarget;
+
+            // Cambia el estado de la IA a persecución del jugador
             stateMachine.ChangeState(new ChasePlayerState(stateMachine, this, enemyAnimation));
         }
     }
