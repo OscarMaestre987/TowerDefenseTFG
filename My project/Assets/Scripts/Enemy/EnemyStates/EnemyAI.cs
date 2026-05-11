@@ -23,7 +23,8 @@ public class EnemyAI : MonoBehaviour, IDamageable
     [HideInInspector] public EnemyStateMachine stateMachine;
     [HideInInspector] public Transform currentTarget;
     [HideInInspector] public EnemyAnimationsController enemyAnimation;
-
+    private float originalSpeed;
+    private float currentSlow = 1f;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class EnemyAI : MonoBehaviour, IDamageable
         currentTarget = baseTarget;
         stateMachine = new EnemyStateMachine();
         enemyAnimation = GetComponent<EnemyAnimationsController>();
+        originalSpeed = moveSpeed;
         if (enemyAnimation == null)
         {
             Debug.Log("enemyAnimator no encontrado");
@@ -43,6 +45,24 @@ public class EnemyAI : MonoBehaviour, IDamageable
     void Update()
     {
         stateMachine.Update();
+    }
+
+    public void ApplySlow(float amount)
+    {
+        currentSlow += amount;
+        UpdateSpeed();
+    }
+
+    public void RemoveSlow(float amount)
+    {
+        currentSlow -= amount;
+        currentSlow = Mathf.Max(1, currentSlow);
+        UpdateSpeed();
+    }
+
+    void UpdateSpeed()
+    {
+        moveSpeed = originalSpeed / currentSlow;
     }
 
     public void TakeDamage(int amount, GameObject source)

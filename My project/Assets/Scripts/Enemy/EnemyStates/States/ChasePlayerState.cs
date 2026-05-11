@@ -25,6 +25,7 @@ public class ChasePlayerState : EnemyState
         if (enemy.playerTarget == null) return;
 
         Vector3 dir = (enemy.playerTarget.position - enemy.transform.position).normalized;
+        agent.speed = enemy.moveSpeed;
         agent = enemy.GetComponent<NavMeshAgent>();
         agent.SetDestination(enemy.playerTarget.position);
 

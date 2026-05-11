@@ -26,6 +26,7 @@ public class WaveManager : MonoBehaviour
     private bool isSpawning = false;
     private bool waitingNextWave = false;
     private bool skipWave = false;
+    private float delay = 0.5f;
 
     public TextMeshProUGUI waveTextUI;
     public float waveTextDisplayTime = 2f;
@@ -71,7 +72,7 @@ public class WaveManager : MonoBehaviour
 
         List<EnemyEntry> waveEnemies = BuildWaveEnemyList(currentWavePoints);
 
-        StartCoroutine(SpawnEnemiesGradually(waveEnemies, 0.5f));
+        StartCoroutine(SpawnEnemiesGradually(waveEnemies, delay));
     }
 
     IEnumerator StartNextWaveDelay()
@@ -87,7 +88,7 @@ public class WaveManager : MonoBehaviour
         while (timer > 0)
         {
             // Permite al jugador saltar la espera manualmente
-            if (skipWave)
+            if (skipWave)   
             {
                 Debug.Log("Oleada saltada");
                 break;
@@ -123,7 +124,7 @@ public class WaveManager : MonoBehaviour
     }
 
 
-    IEnumerator SpawnEnemiesGradually(List<EnemyEntry> waveEnemies, float delay = 0.5f)
+    IEnumerator SpawnEnemiesGradually(List<EnemyEntry> waveEnemies, float delay)
     {
         // Recorre la lista de enemigos generada previamente para la oleada
         foreach (var enemyEntry in waveEnemies)

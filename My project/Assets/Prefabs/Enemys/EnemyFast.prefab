@@ -148,7 +148,7 @@ MonoBehaviour:
   maxHealth: 25
   damage: 5
   moveSpeed: 7
-  aggroThreshold: 0.8
+  aggroThreshold: 1
   attackRange: 1.5
   attackSpeed: 0.5
   goldGain: 200

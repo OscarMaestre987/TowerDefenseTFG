@@ -20,7 +20,7 @@ public class GoToBaseState : EnemyState
     public override void Update()
     {
         if (enemy.baseTarget == null) return;
-
+        agent.speed = enemy.moveSpeed;
         // Avanzar hacia adelante (en Z) localmente
         Vector3 backward = enemy.transform.forward;
         Vector3 nextPosition = enemy.transform.position + backward * agent.speed * Time.deltaTime;
