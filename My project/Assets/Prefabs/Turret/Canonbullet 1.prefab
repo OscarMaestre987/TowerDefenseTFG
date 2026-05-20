@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8518823509190013058}
   - component: {fileID: 5752214585038096515}
   m_Layer: 0
-  m_Name: Pistolbullet
+  m_Name: Canonbullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96526efdd2e344c48a18d74064105a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 125
   lifetime: 10
 --- !u!54 &8518823509190013058
 Rigidbody:
