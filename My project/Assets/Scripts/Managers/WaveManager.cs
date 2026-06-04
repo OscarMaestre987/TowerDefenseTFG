@@ -62,7 +62,7 @@ public class WaveManager : MonoBehaviour
 
         yield return StartNextWaveDelay();
 
-        delay = Mathf.Max(delay - 0.01f, 0.1f);
+        delay = Mathf.Max(delay - 0.01f, 0.01f);
 
         num = currentWave / 10;
         currentWavePoints = currentWavePoints + (int)(pointsPerWaveIncrease * Mathf.Pow(2, num));
