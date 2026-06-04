@@ -159,6 +159,8 @@ MonoBehaviour:
   baseTarget: {fileID: 0}
   currentTarget: {fileID: 0}
   enemyAnimation: {fileID: 0}
+  pathPoints:
+  - {fileID: 5261647542601847498, guid: 5918a117d6ee1424bb82523d43d8e8c6, type: 3}
 --- !u!1001 &7533876178108741826
 PrefabInstance:
   m_ObjectHideFlags: 0

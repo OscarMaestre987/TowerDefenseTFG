@@ -135,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7415107529915594087, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7415107529915594087, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_LocalRotation.x
@@ -143,7 +143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7415107529915594087, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7415107529915594087, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_LocalRotation.z
@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7415107529915594087, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7415107529915594087, guid: 3ad9eb13e1e1cb5458a3967c550d1de1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -227,3 +227,5 @@ MonoBehaviour:
   baseTarget: {fileID: 0}
   currentTarget: {fileID: 0}
   enemyAnimation: {fileID: 0}
+  pathPoints:
+  - {fileID: 5261647542601847498, guid: 5918a117d6ee1424bb82523d43d8e8c6, type: 3}

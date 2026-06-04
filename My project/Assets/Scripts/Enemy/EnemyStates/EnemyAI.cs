@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour, IDamageable
     [HideInInspector] public EnemyStateMachine stateMachine;
     [HideInInspector] public Transform currentTarget;
     [HideInInspector] public EnemyAnimationsController enemyAnimation;
+    [Header("Ruta")]
+    public GameObject[] pathPoints;
     private float originalSpeed;
     private float currentSlow = 1f;
 
@@ -31,10 +33,12 @@ public class EnemyAI : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
         playerTarget = GameObject.FindWithTag("Player")?.transform;
         baseTarget = GameObject.FindWithTag("Base")?.transform;
-        currentTarget = baseTarget;
         stateMachine = new EnemyStateMachine();
         enemyAnimation = GetComponent<EnemyAnimationsController>();
         originalSpeed = moveSpeed;
+        currentTarget = baseTarget;
+        if (aggroThreshold == 1f)
+            currentTarget = playerTarget;
         if (enemyAnimation == null)
         {
             Debug.Log("enemyAnimator no encontrado");
@@ -56,13 +60,15 @@ public class EnemyAI : MonoBehaviour, IDamageable
     public void RemoveSlow(float amount)
     {
         currentSlow -= amount;
-        currentSlow = Mathf.Max(1, currentSlow);
+        currentSlow = Mathf.Max(0, currentSlow);
         UpdateSpeed();
     }
 
     void UpdateSpeed()
     {
-        moveSpeed = originalSpeed / currentSlow;
+        if (currentSlow >= 10)
+            currentSlow = 9;
+        moveSpeed = originalSpeed *  (1 - currentSlow/10);
     }
 
     public void TakeDamage(int amount, GameObject source)

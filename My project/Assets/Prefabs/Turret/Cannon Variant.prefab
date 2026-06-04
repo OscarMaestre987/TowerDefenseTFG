@@ -40,7 +40,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3515101171880872934, guid: e7082872dee292043905641bab4a102b, type: 3}
       propertyPath: m_Name
-      value: Cannon
+      value: Cannon Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4288540963014742364, guid: e7082872dee292043905641bab4a102b, type: 3}
       propertyPath: m_RootOrder
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca729c110696334b8e3cceb54410dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 15
+  detectionRadius: 20
   fireRate: 3
   buletSpeed: 50
   bulletPrefab: {fileID: 1231614812322653505, guid: 5f76db09055155e45b822d0d3f06de95, type: 3}

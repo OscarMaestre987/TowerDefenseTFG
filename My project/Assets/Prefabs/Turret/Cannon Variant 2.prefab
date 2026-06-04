@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 1231614812322653505, guid: 526905a9a0710fc4d9628af06127d89f, type: 3}
+    - target: {fileID: 50589041316905681, guid: a147e47d06da8c54e83e2e6a1b521408, type: 3}
+      propertyPath: detectionRadius
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3743156178749403954, guid: a147e47d06da8c54e83e2e6a1b521408, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -69,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4087452184400816520, guid: a147e47d06da8c54e83e2e6a1b521408, type: 3}
       propertyPath: m_Name
-      value: Cannon
+      value: Cannon Variant 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a147e47d06da8c54e83e2e6a1b521408, type: 3}

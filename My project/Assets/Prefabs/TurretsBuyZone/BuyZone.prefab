@@ -111,14 +111,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7438450602dbada48a1f13534cb3de93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretLevels:
-  - {fileID: 4861725482523440616, guid: 757edc7477a1c3d40941eb99dda0f1f3, type: 3}
-  - {fileID: 138906768218940055, guid: fe6b41ae7ba50664a8bc85994c6a78ef, type: 3}
-  - {fileID: 341694140825934178, guid: 39ef86d6e8db7b24790cfb91a0b3becd, type: 3}
-  - {fileID: 3337542954395005028, guid: 8c5c5f0d5a7bf904787c9a3b691a9e81, type: 3}
-  turretCosts: e8030000b80b00004c1d0000983a0000
+  towerOptions:
+  - towerName: Cannon
+    turretLevels:
+    - {fileID: 5363713163922483471, guid: fa70ce2a2e079c94392d638f09a54baf, type: 3}
+    - {fileID: 4087452184400816520, guid: a147e47d06da8c54e83e2e6a1b521408, type: 3}
+    - {fileID: 2062769707330477803, guid: 4fbce36a0a943d74a9b387fecb61c9ea, type: 3}
+    - {fileID: 6632671779197816820, guid: 2dbf14dd9fc5a5742aff9238cdcd7a5f, type: 3}
+    turretCosts: 0a0000001e0000004b00000096000000
+  - towerName: Turret
+    turretLevels:
+    - {fileID: 8936336833931891384, guid: 757edc7477a1c3d40941eb99dda0f1f3, type: 3}
+    - {fileID: 4390955455740266692, guid: fe6b41ae7ba50664a8bc85994c6a78ef, type: 3}
+    - {fileID: 1971649296819102407, guid: 39ef86d6e8db7b24790cfb91a0b3becd, type: 3}
+    - {fileID: 5001824976648779958, guid: 8c5c5f0d5a7bf904787c9a3b691a9e81, type: 3}
+    turretCosts: e8030000b80b00004c1d0000983a0000
+  - towerName: Ice
+    turretLevels:
+    - {fileID: 7696908042103932753, guid: 92293668665bcb849b2b6fc274cb8bc9, type: 3}
+    - {fileID: 7646791083254265924, guid: 99411e390f52cb9428012c46134a1cfe, type: 3}
+    - {fileID: 4194669747119399044, guid: 5d359100caf5ea6419039f43cd99f92b, type: 3}
+    - {fileID: 7846977115062549336, guid: 959f1ce784123b4488738120a037bbfb, type: 3}
+    turretCosts: 0a0000001e0000004b00000096000000
   spawnPoint: {fileID: 6299821507173246289}
   buyPromptText: {fileID: 0}
+  towerSelectionPanel: {fileID: 0}
+  selectionBorders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6299821507173246288
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6299821507173246288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
