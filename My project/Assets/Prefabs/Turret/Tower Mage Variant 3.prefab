@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 31290853205949560, guid: 99411e390f52cb9428012c46134a1cfe, type: 3}
       propertyPath: range
-      value: 35
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 31290853205949560, guid: 99411e390f52cb9428012c46134a1cfe, type: 3}
       propertyPath: slowAmount

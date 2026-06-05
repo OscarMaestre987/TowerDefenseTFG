@@ -135,7 +135,7 @@ public class TurretPurchaseZone : MonoBehaviour
 
             currentTurret = Instantiate(
                 selectedTower.turretLevels[0],
-                spawnPoint.position,
+                spawnPoint.position + Vector3.up * 0.25f,
                 spawnPoint.rotation
             );
 

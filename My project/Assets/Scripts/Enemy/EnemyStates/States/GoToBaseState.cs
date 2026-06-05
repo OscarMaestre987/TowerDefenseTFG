@@ -17,8 +17,8 @@ public class GoToBaseState : EnemyState
     {
         agent = enemy.GetComponent<NavMeshAgent>();
 
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        agent.updateRotation = true;
+        agent.updateUpAxis = true;
         agent.speed = enemy.moveSpeed;
         agent.isStopped = false;
         randomPointDistance = Random.Range(0f, 25f);
